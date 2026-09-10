@@ -6,7 +6,7 @@ using namespace std;
 
 int main(int argc, char** argv){
 	if (argc < 2){
-		cerr << "Usage: ./a.out <number_of_vertices>";
+		cerr << "Usage: <executable name> <number_of_vertices>\n";
 		return 1;
 	}
 	// get number of vertices as cmd line arg
