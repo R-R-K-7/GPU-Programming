@@ -16,16 +16,15 @@ int main(int argc, char** argv){
 
 	mt19937 rng(42);
 	uniform_real_distribution<double> rand_prob(0.0,1.0);
-	uniform_int_distribution<int> rand_wt(1,1000); // positive to avoid negative cycles
 
-	vector<vector<array<int,2>>> adj(n);
+	vector<vector<int>> adj(n);
 	int total_edges = 0;
 
 	for (int u=0;u<n;u++){
 		for (int v=0;v<n;v++){
 			if (u==v) continue; // no self loops
 			if (rand_prob(rng) < prob){
-				adj[u].push_back({v,rand_wt(rng)});
+				adj[u].push_back(v);
 				total_edges++;
 			}
 		}
@@ -35,8 +34,8 @@ int main(int argc, char** argv){
 	cout << n << " " << total_edges << endl;
 	for (int u=0;u<n;u++){
 		cout << adj[u].size() << " ";
-		for (auto& p : adj[u]){
-			cout << p[0] << " " << p[1] << " ";
+		for (auto& v : adj[u]){
+			cout << v << " ";
 		}
 		cout << endl;
 	}
